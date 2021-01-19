@@ -1,0 +1,20 @@
+#! /usr/bin/env node
+const path = require('path');
+const { Command } = require('commander');
+
+const { asyncValidator } = require('../src');
+
+const program = new Command();
+program.version('1.0.2');
+
+program
+  .requiredOption('-f, --file <file>', 'async api definition')
+  .option('-W, --no-watch', 'disable watcher to file', false)
+  .parse(process.argv);
+
+const options = program.opts();
+
+const localDirectory = process.cwd();
+const file = path.join(localDirectory, options.file);
+
+asyncValidator({ ...options, file });

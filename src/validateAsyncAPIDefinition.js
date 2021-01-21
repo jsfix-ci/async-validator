@@ -8,8 +8,12 @@ function validateAsyncAPIDefinition(file) {
   parser.parse(apiDefinition)
     .then(() => success('The definition file is correct!!'))
     .catch(err => {
-      const errorMessages = err.validationErrors.map(e => `${e.title} ${e.location.startLine}:${e.location.startColumn}`);
-      errorMessages.forEach(item => error(item));
+      if (err.detail) {
+        error(err.detail);
+      } else {
+        const errorMessages = err.validationErrors.map(e => `${e.title} ${e.location.startLine}:${e.location.startColumn}`);
+        errorMessages.forEach(item => error(item));
+      }
     });
 }
 

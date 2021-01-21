@@ -1,6 +1,6 @@
 {
   "name": "@jotamusik/async-validator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "An AsyncAPI schema validator that shows the errors on a definition",
   "main": "src/index.js",
   "bin": {
@@ -21,7 +21,9 @@
     "asyncapi",
     "validator"
   ],
-  "scripts": {},
+  "scripts": {
+    "test": "bin/async-validator -f ../netex/lcloud/asyncapi/definitionV2.yml"
+  },
   "author": "Jorge Aguiar Martin <jotamusik@gmail.com>",
   "repository": {
     "type" : "git",
